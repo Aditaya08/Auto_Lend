@@ -2,7 +2,7 @@
 
 Non-custodial peer-to-peer auto lending on Bitcoin RegTest: a dealer lists a car, a lender funds it, and the money sits in a 2-of-3 multisig escrow until delivery — with PSBTs built, signed and broadcast against a real `bitcoind`.
 
-![Dealer portal](docs/screenshots/dealer.jpg)
+![Splash screen](docs/screenshots/splash.jpg)
 
 ## How it fits together
 
@@ -39,8 +39,6 @@ The backend never holds keys. It shells out to a Rust binary that generates wall
 | Dev DB | `mongodb-memory-server` (no local `mongod` needed) |
 
 ## Screens
-
-![Splash screen](docs/screenshots/splash.jpg)
 
 | Dealer portal | Lender portal |
 |---|---|
