@@ -63,7 +63,7 @@ The `regtest` feature is required: without it the bridge does not connect to the
 
 ```bash
 ./scripts/setup-regtest.sh          # wipes ~/.bitcoin/regtest, starts bitcoind, mines 101 blocks
-node scripts/esplora-regtest.js     # reads tx data from bitcoind on :3006
+node scripts/esplora-regtest.mjs    # reads tx data from bitcoind on :3006
 ```
 
 `setup-regtest.sh` enables `-txindex`, which the verification API needs to look up arbitrary transactions.
@@ -116,7 +116,7 @@ It walks the full path: create three wallets → fund → 2-of-3 multisig → fu
 
 - **Oracle is a mock.** `src/services/oracleMock.js` derives vehicle valuation and credit score from a SHA-256 of the VIN/customer id, and returns a hardcoded 5.5% market rate. It is deterministic, not a price feed.
 - **Escrow funding is a recorded txid.** The lender supplies `fundingTxId` + `escrowAddress`; the server verifies the transaction but does not build the funding transaction itself.
-- **The Esplora endpoint is a local translator.** `scripts/esplora-regtest.js` exposes read-only `tx`, `status` and `tip/height` from bitcoind. It is not a full Esplora instance.
+- **The Esplora endpoint is a local translator.** `scripts/esplora-regtest.mjs` exposes read-only `tx`, `status` and `tip/height` from bitcoind. It is not a full Esplora instance.
 - **Default protection is not automated.** The timelock script builder is available but unused; a defaulted loan needs the lender to call `liquidate` with a txid.
 - **Auth is minimal.** JWT in `localStorage`, no refresh, no rate limiting, no password policy beyond 6 characters.
 - **No backend test suite.** `npm test` is still the `exit 1` stub.
