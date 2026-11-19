@@ -1,12 +1,16 @@
-const { execFile } = require('child_process');
-const path = require('path');
+import { execFile } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const BINARY = path.resolve(
   __dirname, 
   '../../autolend-bitcoin/target/release/autolend-bitcoin'
 );
 
-function callBitcoin(command, params = {}) {
+export function callBitcoin(command, params = {}) {
   return new Promise((resolve, reject) => {
     const input = JSON.stringify({ command, ...params });
     const child = execFile(BINARY, [], (error, stdout, stderr) => {
@@ -27,5 +31,3 @@ function callBitcoin(command, params = {}) {
     child.stdin.end();
   });
 }
-
-module.exports = { callBitcoin };
