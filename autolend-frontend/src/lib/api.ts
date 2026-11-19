@@ -51,7 +51,8 @@ export const submitRepayment = (loanId: string, amountBTC: number): Promise<Repa
   fetchWithAuth(`/customer/repayments/${loanId}/pay`, { method: "POST", body: JSON.stringify({ amountBTC }) });
 
 // Escrow API
-export const getEscrowDetails = (loanId: string): Promise<LoanAgreement> => fetchWithAuth(`/escrow/${loanId}`);
+export const getEscrowDetails = async (loanId: string): Promise<LoanAgreement> =>
+  (await fetchWithAuth(`/escrow/${loanId}`)).loan;
 export const fundEscrow = (loanId: string): Promise<EscrowState> => fetchWithAuth(`/escrow/${loanId}/fund`, { method: "POST" });
 export const releaseEscrow = (loanId: string): Promise<EscrowState> => fetchWithAuth(`/escrow/${loanId}/release`, { method: "POST" });
 export const liquidateEscrow = (loanId: string): Promise<EscrowState> => fetchWithAuth(`/escrow/${loanId}/liquidate`, { method: "POST" });
