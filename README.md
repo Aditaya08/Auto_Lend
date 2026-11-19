@@ -40,6 +40,8 @@ The backend never holds keys. It shells out to a Rust binary that generates wall
 
 ## Screens
 
+![Landing page](docs/screenshots/home.jpg)
+
 | Dealer portal | Lender portal |
 |---|---|
 | ![Dealer](docs/screenshots/dealer.jpg) | ![Lender](docs/screenshots/lender.jpg) |
