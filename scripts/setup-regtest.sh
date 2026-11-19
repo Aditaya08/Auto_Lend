@@ -11,7 +11,7 @@ sleep 2
 rm -rf ~/.bitcoin/regtest
 
 # Start bitcoind in background
-bitcoind -regtest -daemon -fallbackfee=0.00001 -rpcuser=admin -rpcpassword=adminpass -deprecatedrpc=create_bdb
+bitcoind -regtest -daemon -txindex=1 -fallbackfee=0.00001 -rpcuser=admin -rpcpassword=adminpass -deprecatedrpc=create_bdb
 
 # Wait for it to start
 echo "Waiting for bitcoind to start..."
